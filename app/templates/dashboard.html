@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SentinelGuard Enterprise v5</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">SentinelGuard <span>v5</span></div>
+      <div class="nav-section">SOC Operations</div>
+      <a>Overview</a><a>Incidents</a><a>Cases</a><a>Evidence</a><a>Threat Intel</a><a>Agents</a><a>Rules Lab</a><a>SSO & Trust</a>
+    </aside>
+    <main class="content">
+      <header class="hero">
+        <div>
+          <h1>Enterprise SOC Platform</h1>
+          <p>OIDC/SAML, PKI, RLS, distributed fanout, Sigma lab, case management, evidence locker, Kubernetes + observability.</p>
+        </div>
+        <div class="hero-badges"><span>Live-ready</span><span>Multi-tenant</span><span>Analyst workflow</span></div>
+      </header>
+      <section class="cards grid-4">
+        <div class="card"><h3>Alerts</h3><strong>{{ metrics.alerts.total if metrics.alerts else 0 }}</strong></div>
+        <div class="card"><h3>Incidents</h3><strong>{{ metrics.incidents.total if metrics.incidents else 0 }}</strong></div>
+        <div class="card"><h3>Cases</h3><strong>{{ metrics.cases }}</strong></div>
+        <div class="card"><h3>Admin</h3><strong>{{ default_admin_email }}</strong></div>
+      </section>
+      <section class="grid-2">
+        <div class="panel">
+          <h2>Analyst Queue</h2>
+          <table><thead><tr><th>Severity</th><th>Title</th><th>Status</th><th>Triage</th></tr></thead><tbody>{% for i in incidents %}<tr><td>{{ i.severity }}</td><td>{{ i.title }}</td><td>{{ i.status }}</td><td>{{ i.triage_status }}</td></tr>{% endfor %}</tbody></table>
+        </div>
+        <div class="panel">
+          <h2>Case Workbench</h2>
+          <table><thead><tr><th>Title</th><th>Priority</th><th>Status</th></tr></thead><tbody>{% for c in cases %}<tr><td>{{ c.title }}</td><td>{{ c.priority }}</td><td>{{ c.status }}</td></tr>{% endfor %}</tbody></table>
+        </div>
+      </section>
+      <section class="grid-2">
+        <div class="panel"><h2>Top Noisy Sources</h2><ul>{% for item in metrics.noisy %}<li>{{ item.src_ip }} — {{ item.count }}</li>{% endfor %}</ul></div>
+        <div class="panel"><h2>Registered Agents</h2><ul>{% for agent in agents %}<li>{{ agent.hostname }} ({{ agent.agent_id }}) — {{ agent.status }}</li>{% endfor %}</ul></div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
