@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: sentinelguard
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: postgres }
+  template:
+    metadata: { labels: { app: postgres } }
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          env:
+            - { name: POSTGRES_DB, value: sentinelguard }
+            - { name: POSTGRES_USER, value: sentinelguard }
+            - { name: POSTGRES_PASSWORD, value: sentinelguard }
+          ports: [{ containerPort: 5432 }]

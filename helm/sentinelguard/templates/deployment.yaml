@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sentinelguard-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: sentinelguard-api }
+  template:
+    metadata:
+      labels: { app: sentinelguard-api }
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8000'
+    spec:
+      containers:
+        - name: api
+          image: '{{ .Values.image.repository }}:{{ .Values.image.tag }}'
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: APP_ENV
+              value: '{{ .Values.env.APP_ENV }}'
+            - name: DATABASE_URL
+              value: '{{ .Values.env.DATABASE_URL }}'
+            - name: REDIS_URL
+              value: '{{ .Values.env.REDIS_URL }}'
+            - name: CELERY_BROKER_URL
+              value: '{{ .Values.env.CELERY_BROKER_URL }}'
+            - name: CELERY_RESULT_BACKEND
+              value: '{{ .Values.env.CELERY_RESULT_BACKEND }}'
+          ports:
+            - containerPort: 8000

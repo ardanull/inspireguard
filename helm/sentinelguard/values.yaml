@@ -1,0 +1,13 @@
+image:
+  repository: sentinelguard/enterprise
+  tag: '5.0.0'
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 8000
+env:
+  APP_ENV: production
+  DATABASE_URL: postgresql+psycopg://sentinelguard:sentinelguard@postgres:5432/sentinelguard
+  REDIS_URL: redis://redis:6379/0
+  CELERY_BROKER_URL: redis://redis:6379/1
+  CELERY_RESULT_BACKEND: redis://redis:6379/2

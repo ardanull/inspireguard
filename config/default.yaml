@@ -1,0 +1,14 @@
+platform:
+  name: SentinelGuard Enterprise v5
+  mode: live
+  fanout: redis
+  tenant_isolation: postgresql-rls
+collectors:
+  enrollment_mode: certificate
+  heartbeat_interval_seconds: 30
+sigma_lab:
+  enabled: true
+observability:
+  prometheus: true
+  otel: true
+  structured_logging: true
