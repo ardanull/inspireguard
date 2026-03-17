@@ -1,4 +1,4 @@
-# SentinelGuard
+# InspireGuard
 
 <p align="center">
   <strong>Enterprise-grade SOC platform for real-time threat detection, incident correlation, analyst workflows, and scalable security operations.</strong>
@@ -18,9 +18,9 @@
 
 ## Overview
 
-**SentinelGuard** is a product-oriented Security Operations Center (SOC) platform designed to model how modern defensive security systems operate in real environments.
+**InspireGuard** is a product-oriented Security Operations Center (SOC) platform designed to model how modern defensive security systems operate in real environments.
 
-Rather than acting as a simple IDS or alert generator, SentinelGuard is built around the full lifecycle of security operations:
+Rather than acting as a simple IDS or alert generator, InspireGuard is built around the full lifecycle of security operations:
 
 - collecting telemetry from multiple sources
 - detecting suspicious activity
@@ -34,11 +34,11 @@ This project combines **cybersecurity engineering**, **detection engineering**, 
 
 ---
 
-## Why SentinelGuard?
+## Why InspireGuard?
 
 Most security projects stop at packet capture, log parsing, or simple alerting.
 
-SentinelGuard was built to go further.
+InspireGuard was built to go further.
 
 The goal of this platform is to simulate the architectural depth of a real SOC product by bringing together:
 
@@ -52,7 +52,7 @@ The goal of this platform is to simulate the architectural depth of a real SOC p
 - deployment readiness
 - observability
 
-SentinelGuard is designed to feel less like a demo and more like the foundation of a serious defensive security product.
+InspireGuard is designed to feel less like a demo and more like the foundation of a serious defensive security product.
 
 ---
 
@@ -108,7 +108,7 @@ SentinelGuard is designed to feel less like a demo and more like the foundation 
 
 ## Architecture
 
-SentinelGuard is designed as a modular platform composed of multiple subsystems:
+InspireGuard is designed as a modular platform composed of multiple subsystems:
 
 ```text
                         +----------------------+
